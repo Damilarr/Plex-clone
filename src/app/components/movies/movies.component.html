@@ -1,0 +1,13 @@
+<section class="bg-[#1B1B1B]">
+    <div class="p-7 md:p-10 flex items-center overflow-x-scroll gap-5 relative bg-[#1B1B1B]">
+      <h2 class=" text-xl md:text-2xl absolute top-0 text-white font-bold">Popular Movies</h2>
+        <a routerLink='/movieDetail/{{item.id}}' class="rounded transition-all overflow-hidden pt-2 sm:pt-3 md:pt-0 hover:scale-110 shadow-xl max-h-fit md:min-h-fit min-w-fit" *ngFor="let item of movies;let id = index">
+          <img class="object-cover rounded" src="https://image.tmdb.org/t/p/w220_and_h330_face{{item.poster_path}}" alt="Mountain">
+        </a>
+    </div>
+    <div class="p-7 md:p-10 flex items-center overflow-x-scroll gap-5 relative bg-[#1B1B1B]">
+        <a routerLink='/movieDetail/{{item.id}}' class="rounded transition-all overflow-hidden pt-2 sm:pt-3 md:pt-0 hover:scale-110 shadow-xl max-h-fit md:min-h-fit min-w-fit" *ngFor="let item of movies2;let id = index">
+          <img class="object-cover rounded" src="https://image.tmdb.org/t/p/w220_and_h330_face{{item.poster_path}}" alt="Mountain">
+        </a>
+    </div>
+  </section>

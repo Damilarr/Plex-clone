@@ -1,0 +1,15 @@
+<section>
+  <div class="p-7 md:p-10 flex items-center overflow-x-scroll gap-5 relative bg-[#2d2d2d]">
+    <h2 class=" text-xl md:text-2xl absolute top-0 text-white font-bold">Popular Tv series</h2>
+      <a routerLink='/tvDetail/{{item.id}}' class="rounded transition-all overflow-hidden pt-2 sm:pt-3 md:pt-0 hover:scale-110 shadow-xl max-h-fit md:min-h-fit min-w-fit" *ngFor="let item of popular;let id = index">
+        <img class="object-cover rounded" src="https://image.tmdb.org/t/p/w220_and_h330_face{{item.poster_path}}" alt="Mountain">
+      </a>
+  </div>
+  <div class="p-7 md:p-10 flex items-center overflow-x-scroll gap-5 relative bg-[#2d2d2d]">
+      <a routerLink='/tvDetail/{{item.id}}' class="rounded transition-all overflow-hidden pt-2 sm:pt-3 md:pt-0 hover:scale-110 shadow-xl max-h-fit md:min-h-fit min-w-fit" *ngFor="let item of popular2;let id = index">
+        <img class="object-cover rounded" src="https://image.tmdb.org/t/p/w220_and_h330_face{{item.poster_path}}" alt="Mountain">
+      </a>
+  </div>
+</section>
+
+

@@ -1,0 +1,24 @@
+<!-- component -->
+<div class="h-screen bg-black flex items-center justify-center" *ngIf="loading">
+    <div class="w-16 h-16 border-4 border-dashed rounded-full transition-all animate-spin border-yellow-500"></div>
+</div>
+<section style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('https://image.tmdb.org/t/p/original{{movieDetails.backdrop_path}}');" class="h-screen relative  object-cover bg-center bg-fixed bg-cover bg-no-repeat  pt-7 w-full" *ngIf="!loading">
+    <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-6 px-4 lg:px-8 w-full items-start">
+        <img routerLink="/video/{{id}}" class="object-fit mx-auto lg:mx-0 rounded shadow-md hover:border-2 hover:border-yellow-500" src="https://image.tmdb.org/t/p/w220_and_h330_face{{movieDetails.poster_path}}" alt="">
+        <div class="flex flex-col">
+            <h1 class="text-white text-2xl">{{movieDetails.original_name}}</h1>
+            <p class="text-white text-lg">{{movieDetails.release_date}}</p>
+            <span class="px-2 my-2 rounded py-1 w-fit bg-col text-white">{{movieDetails.vote_average}}</span>
+            <div class="flex my-2 space-x-2 flex-wrap sm:flex-nowrap">
+                <span class="px-2 my-2 rounded py-1 bg-col text-white" *ngFor="let genre of movieDetails.genres;let id = index">{{genre.name}}</span>
+            </div>
+            <div class="flex">
+                <button routerLink="/video/movie/{{id}}" class="bg-yellow-500 py-2 lg:py-1 px-4 w-full lg:w-fit rounded font-bold"><i class="fa-solid fa-play"></i> Play</button>    
+            </div>
+            <p class="text-white text-xl py-2">{{movieDetails.overview}}</p>
+            <p class="text-gray-400 text-base" *ngIf="movieDetails.created_by.length >= 1">Created by: <span class="text-white" *ngFor="let items of movieDetails.created_by;let id = index">{{id == 0?'':', '}}{{items.name}}</span></p>
+            <p class="text-gray-400 text-base pb-6 sm:pb-0">Languages:<span *ngFor="let lang of movieDetails.spoken_languages">{{lang.name}}({{ lang.iso_639_1 }})</span></p>
+        </div>
+    </div>
+</section>
+
