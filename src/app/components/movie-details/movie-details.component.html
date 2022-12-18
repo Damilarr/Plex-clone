@@ -6,17 +6,20 @@
     <div class="flex flex-col lg:flex-row space-x-0 lg:space-x-6 px-4 lg:px-8 w-full items-start">
         <img routerLink="/video/{{id}}" class="object-fit mx-auto lg:mx-0 rounded shadow-md hover:border-2 hover:border-yellow-500" src="https://image.tmdb.org/t/p/w220_and_h330_face{{movieDetails.poster_path}}" alt="">
         <div class="flex flex-col">
-            <h1 class="text-white text-2xl">{{movieDetails.original_name}}</h1>
-            <p class="text-white text-lg">{{movieDetails.release_date}}</p>
-            <span class="px-2 my-2 rounded py-1 w-fit bg-col text-white">{{movieDetails.vote_average}}</span>
+            <h1 class="text-white text-2xl">{{movieDetails.original_title}}</h1>
+            <p class="text-white text-lg">{{movieDetails.release_date | date}}</p>
+            <div class="flex space-x-2">
+                <span class="px-2 my-2 rounded py-1 w-fit bg-col text-white">rating: {{movieDetails.vote_average}}/10</span>
+                <span class="px-2 my-2 rounded py-1 w-fit bg-col text-white">{{movieDetails.runtime}} mins</span>
+                <span class="px-2 my-2 {{movieDetails.status == 'Released'?'bg-green-500':'bg-col'}} font-bold rounded py-1 w-fit text-white">{{movieDetails.status}}</span>
+            </div>
             <div class="flex my-2 space-x-2 flex-wrap sm:flex-nowrap">
-                <span class="px-2 my-2 rounded py-1 bg-col text-white" *ngFor="let genre of movieDetails.genres;let id = index">{{genre.name}}</span>
+                <span class="px-2 my-2 rounded py-1 bg-col text-white" *ngFor="let genre of movieDetails.genres">{{genre.name}}</span>
             </div>
             <div class="flex">
                 <button routerLink="/video/movie/{{id}}" class="bg-yellow-500 py-2 lg:py-1 px-4 w-full lg:w-fit rounded font-bold"><i class="fa-solid fa-play"></i> Play</button>    
             </div>
             <p class="text-white text-xl py-2">{{movieDetails.overview}}</p>
-            <p class="text-gray-400 text-base" *ngIf="movieDetails.created_by.length >= 1">Created by: <span class="text-white" *ngFor="let items of movieDetails.created_by;let id = index">{{id == 0?'':', '}}{{items.name}}</span></p>
             <p class="text-gray-400 text-base pb-6 sm:pb-0">Languages:<span *ngFor="let lang of movieDetails.spoken_languages">{{lang.name}}({{ lang.iso_639_1 }})</span></p>
         </div>
     </div>
