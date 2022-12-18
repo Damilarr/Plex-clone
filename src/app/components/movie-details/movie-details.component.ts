@@ -16,12 +16,13 @@ export class MovieDetailsComponent implements OnInit {
    ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id');
+      this.movieService.getPopMovieDetails(this.id).subscribe(response =>{
+        this.movieDetails = response;
+        this.loading = false
+        this.movieId = this.movieDetails.id
+      });
     })
-    this.movieService.getPopMovieDetails(this.id).subscribe(response =>{
-      this.movieDetails = response;
-      this.loading = false
-      this.movieId = this.movieDetails.id
-    });
+    
    
   }
 }

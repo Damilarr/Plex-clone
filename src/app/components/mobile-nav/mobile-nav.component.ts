@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MovieFetchService } from 'src/app/services/movie-fetch.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-mobile-nav',
+  templateUrl: './mobile-nav.component.html',
+  styleUrls: ['./mobile-nav.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class MobileNavComponent implements OnInit {
   searchInp:any = ''
   loading:any = true
   searchResult:any = []
@@ -22,9 +22,7 @@ export class NavbarComponent implements OnInit {
   }
   searchMovie(){
     this.movieService.search(this.category,this.searchInp).subscribe(response =>{
-      console.log(response);
       this.searchResult = [...response.results]
-      console.log(this.searchResult);
       this.loading=false
     }, (error)=>{
       alert(error.message)
